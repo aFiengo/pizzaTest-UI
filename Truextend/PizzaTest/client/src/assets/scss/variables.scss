@@ -19,15 +19,15 @@ $text-font-style: normal;
 
 $text-font-size-header: 16px;
 $text-font-weight-header: 400;
-$text-font-color-header: #000000;
+$text-font-color-header: #ffffff;
 
 $text-font-size-toppings: 14px;
 $text-font-weight-toppings: 400;
-$text-font-color-toppings: #000000;
+$text-font-color-toppings: #303030;
 
 $text-font-size-footer: 12px;
 $text-font-weight-footer: 400;
-$text-font-color-footer: #000000;
+$text-font-color-footer: #ffffff;
 
 //====================== BUTTONS ======================
 
@@ -36,3 +36,21 @@ $button-font-color: #FFFFFF;
 $button-border: none;
 $button-border-radius: 4px;
 $button-padding: 10px 20px;
+
+//====================== ICONS ======================
+
+$icon-font-size-small: 16px;
+$icon-font-size-large: 24px;
+$icon-color: #FFFFFF;
+$icon-background: none;
+
+//====================== BACKGROUNDS ======================
+
+$backgorund-color: #24252A;
+
+//====================== PADDING ======================
+
+$header-padding: 10px 20px;
+$footer-padding:10px 20px;
+$body-title-padding: 10px 20px;
+$body-text-padding: 10px 20px;
