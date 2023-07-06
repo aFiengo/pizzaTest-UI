@@ -7,12 +7,24 @@ import { Component } from "@angular/core";
 })
 
 export class PizzaListComponent {
-    pizzas = [
-        // Aquí vendría tu array de pizzas, cada una con su nombre e imagen.
-    ];
+    pizzas: any[] = []; // Aquí almacenaremos las pizzas que obtendremos del back-end
 
-    selectPizza(pizza) {
-        // Aquí puedes implementar la lógica que se ejecuta cuando un usuario selecciona una pizza.
-        console.log(pizza);
-    }
+  constructor(private pizzaService: PizzaService) { }
+
+  ngOnInit(): void {
+    this.getPizzas();
+  }
+
+  getPizzas(): void {
+    this.pizzaService.getAllPizzas()
+      .subscribe(
+        data => this.pizzas = data,
+        error => console.error(error)
+      );
+  }
+
+  selectPizza(pizza): void {
+    // Aquí puedes implementar la lógica para abrir el componente 'pizza-card'
+    // Esto dependerá de cómo hayas diseñado tu aplicación.
+  }
 }
