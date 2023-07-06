@@ -1,7 +1,8 @@
+@import '/../../../../assets/scss/variables.scss';
 
 header {
-    background-color: #24252A;
-    padding: 10px 20px;
+    background-color: $banner-bg-color;
+    padding: $header-padding;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,7 +14,7 @@ header {
 }
 
 .logo {
-    size: 10px;
+    size: 8px;
 
     img {
     max-width: 80%;
@@ -23,45 +24,49 @@ header {
     }
 }
 
-.tittle {
+.web-tittle {
     text-align: center;
     font-size: 40px;
-    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-weight: $title-font-weight-detail;
+    color: $text-font-color-header;
     flex: 1;
+
 }
 
 .search-box {
-    padding: 10px 10px;
-    background: rgba(54, 54, 54, 0.5);
+    padding: $box-padding;
+    background: $box-bg-color;
     border-radius: 30px;
     margin-right: 10px;
 
     &:hover {
         .search-txt {
             width: 200px;
-            padding: 0 6px;
+            padding: $button-padding;
         }
     }
     
     .search-button {
-        color: white;
+        color: $icon-color;
         float: right;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+        width: $icon-font-size-large;
+        height: $icon-font-size-large;
+        border-radius: $button-border-radius-circle;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     
     .search-txt {
-        border: none;
+        border: $button-border;
         background: none;
         outline: none;
         float: left;
-        padding: 0;
-        color: white;
-        font-size: 16px;
+        padding: $button-padding;
+        color: $button-font-color;
+        font-size: $text-font-size-header;
         transition: 0.4s;
         line-height: 30px;
         width: 0px;
@@ -72,31 +77,29 @@ header {
     padding: 7px 15px;
     border-radius: 50px;
     
-    &.sign {
-        background-color: rgba(0, 128, 128, 1);
+    &.sign-in {
+        background-color: $button-bg-color;
         margin-right: 10px;
         
         &:hover {
-            background-color: rgba(0, 128, 128, 0.5);
+            background-color: $hover-button-bg-color;
         }
     }
     
-    &.log {
+    &.log-in {
         background-color: transparent;
-        border: 1px solid rgb(0, 128, 128);
+        border: 1px solid $button-bg-color;
         
         &:hover {
-            background-color: rgba(0, 128, 128, 0.5);
+            background-color: $hover-button-bg-color;
         }
     }
 }
 
 .menu-toggle {
-    display: none;
+    display: $display-off;
+    color: $icon-color;
 
-    @media only screen and (max-width: 768px) {
-        display: block;
-    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -106,18 +109,30 @@ header {
         }
     }
 
-    .user {
-        display: none; 
+    .web-tittle {
+        display: $display-off;
+
+        &.open {
+            display: $display-on-mobile; 
+        }
+    }
+
+    .user-profile {
+        display: $display-off; 
     
         &.open {
-            display: block; 
+            display: $display-on-mobile; 
         }
     }
     .search-box {
-        display: none;
+        display: $display-off;
     
         &.open {
-            display: block;
+            display: $display-on-mobile;
         }
+    }
+
+    .menu-toggle {
+        display: $display-on-mobile;
     }
 }

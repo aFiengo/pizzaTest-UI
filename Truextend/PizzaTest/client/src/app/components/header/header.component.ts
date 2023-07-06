@@ -7,5 +7,16 @@ import { Component } from "@angular/core";
 })
 
 export class HeaderComponent {
-    
+    public isMenuCollapsed = true;
+
+  toggleMenu() {
+    this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
+
+  getClass(classes: string) {
+    return {
+      [classes]: true,
+      'collapsed': this.isMenuCollapsed
+    };
+  }
 }
