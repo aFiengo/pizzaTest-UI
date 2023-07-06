@@ -1,7 +1,7 @@
 .vs
 **/bin
 **/obj
-**/.angular/cache
+client/.angular/cache
 # compiled output
 /dist
 /tmp
