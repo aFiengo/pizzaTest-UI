@@ -38,8 +38,8 @@ export class PizzaService {
       .pipe(catchError(this.handleError));
   }
 
-  addToppingToPizza(pizzaId: string, topping: ITopping): Observable<IPizza> {
-    return this.http.post<IPizza>(`${this.apiUrl}/pizzas/${pizzaId}/toppings`, topping)
+  addToppingToPizza(pizzaId: string, toppingId: string): Observable<IPizza> {
+    return this.http.post<IPizza>(`${this.apiUrl}/pizzas/${pizzaId}/toppings/${toppingId}`, {})
       .pipe(catchError(this.handleError));
   }
 

@@ -11,27 +11,58 @@ import { PizzaService } from "src/app/services/pizza.services";
 
 export class PizzaCardComponent implements OnInit {
     @Input() pizza!: IPizza;
-    @Input() allToppings!: ITopping[];
-  
+    @Input() topping!: ITopping;
+    toppings: any[] = []; 
+    selectedToppings: ITopping[] = [];
     addToppings = false;
   
-    constructor() {}
+    constructor(
+        private pizzaService: PizzaService
+        ) {}
   
     ngOnInit() {}
   
-    onToppingChange(event) {
-      if (event.target.checked) {
-        this.pizza.toppings.push(this.allToppings.find(topping => topping.id == event.target.value));
-      } else {
-        this.pizza.toppings = this.pizza.toppings.filter(topping => topping.id != event.target.value);
+    onToppingChange(event: Event, topping : ITopping): void {
+        let target = event.target as HTMLInputElement;
+    if (target.checked) {
+        this.selectedToppings.push(this.topping);
+    } else {
+        this.selectedToppings = this.selectedToppings.filter(t => t.id != this.topping.id);
+    }
       }
+
+    removeTopping(toppingId: string): void {
+        this.pizzaService.deleteToppingFromPizza(this.pizza.id, toppingId).subscribe(
+          () => this.pizza.toppings = this.pizza?.toppings?.filter(topping => topping.id != toppingId),
+          error => console.error('Error removing topping: ', error)
+        );
     }
   
     toggleAddToppings() {
       this.addToppings = !this.addToppings;
     }
+
+    confirmToppings(): void {
+        if(this.selectedToppings && this.pizza) {
+            this.selectedToppings.forEach(topping => {
+              this.pizzaService.addToppingToPizza(this.pizza.id, topping.id).subscribe(
+                () => {
+                  if(this.pizza.toppings) {
+                    this.pizza.toppings = [...this.pizza.toppings, topping];
+                  } else {
+                    this.pizza.toppings = [topping];
+                  }
+                },
+                error => console.error('Error adding topping: ', error)
+              );
+            });
+          }
+      }
   
-    confirmPizza() {
-      // logic to confirm the pizza
-    }
+      finishPizza(): void {
+        console.log(this.pizza);
+        // Here you can also navigate to another component or do anything else you need.
+      }
+
+
   }
