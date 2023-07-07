@@ -5,7 +5,7 @@
 
             <img [src]="pizza.smallImageUrl" alt="{{pizza.name}}" class="pizza-image">
             <h3 class="pizza-name">{{pizza.name}}</h3>
-            <button class="select-button">Select</button>
+            <button (click)="selectPizza(pizza)" class="select-button">Select</button>
         </div>
     </div>
 </div>

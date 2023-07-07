@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { IPizza } from "src/app/models/pizza.model";
 import { ITopping } from "src/app/models/topping.model";
 import { PizzaService } from "src/app/services/pizza.services";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-pizza-card',
@@ -16,11 +17,13 @@ export class PizzaCardComponent implements OnInit {
     selectedToppings: ITopping[] = [];
     addToppings = false;
   
-    constructor(
-        private pizzaService: PizzaService
-        ) {}
+    constructor(private route: ActivatedRoute, private pizzaService: PizzaService) { }
+
   
-    ngOnInit() {}
+    ngOnInit(): void {
+        const id = this.route.snapshot.params['id'];
+        this.getPizza(id);
+    }
   
     onToppingChange(event: Event, topping : ITopping): void {
         let target = event.target as HTMLInputElement;
@@ -57,12 +60,15 @@ export class PizzaCardComponent implements OnInit {
               );
             });
           }
+    }
+    
+    getPizza(id: string): void {
+        this.pizzaService.getPizzaById(id)
+          .subscribe(pizza => this.pizza = pizza);
       }
-  
-      finishPizza(): void {
+
+    finishPizza(): void {
         console.log(this.pizza);
-        // Here you can also navigate to another component or do anything else you need.
-      }
-
-
-  }
+        
+    }
+}
