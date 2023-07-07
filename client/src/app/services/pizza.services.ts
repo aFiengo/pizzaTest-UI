@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, pipe, tap, throwError } from 'rxjs';
 import { IPizza } from '../models/pizza.model';
-import { Topping } from '../models/topping.model';
+import { ITopping } from '../models/topping.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,8 @@ export class PizzaService {
       .pipe(catchError(this.handleError));
   }
 
-  getToppingsForPizza(id: string): Observable<Topping[]> {
-    return this.http.get<Topping[]>(`${this.apiUrl}/pizzas/${id}/toppings`)
+  getToppingsForPizza(id: string): Observable<ITopping[]> {
+    return this.http.get<ITopping[]>(`${this.apiUrl}/pizzas/${id}/toppings`)
       .pipe(catchError(this.handleError));
   }
 
@@ -38,7 +38,7 @@ export class PizzaService {
       .pipe(catchError(this.handleError));
   }
 
-  addToppingToPizza(pizzaId: string, topping: Topping): Observable<IPizza> {
+  addToppingToPizza(pizzaId: string, topping: ITopping): Observable<IPizza> {
     return this.http.post<IPizza>(`${this.apiUrl}/pizzas/${pizzaId}/toppings`, topping)
       .pipe(catchError(this.handleError));
   }
@@ -57,5 +57,5 @@ export class PizzaService {
     }
     console.error(errorMessage);
     return throwError(()=>errorMessage);
-}
+  }
 }

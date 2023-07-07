@@ -1,0 +1,20 @@
+<div class="pizza-card">
+    <div class="pizza-image">
+      <img [src]="pizza.largeImageUrl" alt="{{pizza.name}}">
+    </div>
+  
+    <div class="pizza-details">
+      <h3>{{pizza.name}}</h3>
+      <p *ngFor="let topping of pizza.toppings">{{topping.name}}</p>
+  
+      <div *ngIf="addToppings">
+        <h4>Add Toppings:</h4>
+        <div *ngFor="let topping of allToppings">
+          <input type="checkbox" [value]="topping.id" (change)="onToppingChange($event)"> {{topping.name}}
+        </div>
+      </div>
+  
+      <button (click)="toggleAddToppings()">Add Topping</button>
+      <button (click)="confirmPizza()">Confirm</button>
+    </div>
+  </div>
