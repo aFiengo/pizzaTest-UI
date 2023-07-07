@@ -8,12 +8,12 @@ import { PizzaService } from "src/app/services/pizza.services";
 })
 
 export class PizzaListComponent {
-    pizzas: any[] = []; // Aquí almacenaremos las pizzas que obtendremos del back-end
+    pizzas: any[] = []; 
 
   constructor(private pizzaService: PizzaService) { }
 
   ngOnInit(): void {
-    this.getPizzas();
+    this.pizzaService.getAllPizzasAsync().subscribe(data => this.pizzas = data);
   }
 
   getPizzas(): void {
