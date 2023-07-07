@@ -1,0 +1,7 @@
+<table>
+    <tr *ngFor="let topping of toppings">
+      <td>{{ topping.name }}</td>
+      <td><button (click)="removeTopping(topping)">Remove</button></td>
+    </tr>
+  </table>
+  <button (click)="addTopping(newTopping)">Add</button>

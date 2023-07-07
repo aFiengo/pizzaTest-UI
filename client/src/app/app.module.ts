@@ -9,13 +9,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { PizzaListComponent } from './components/body/pizza-list/pizza-list.component';
+import { ToppingListComponent } from './components/body/topping-list/topping-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PizzaListComponent
+    PizzaListComponent,
+    ToppingListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
