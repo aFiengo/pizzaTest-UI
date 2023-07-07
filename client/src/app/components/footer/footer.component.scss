@@ -1,0 +1,51 @@
+@import '../../../assets/scss/variables.scss';
+
+.footer {
+    background-color: $banner-bg-color;
+    width: 100%;
+    height: auto;
+    font-size: $text-font-size-footer;
+    color: $text-font-color-footer;
+    position: fixed;
+    bottom: 0;
+    left: 0px; 
+    right: 0px; 
+    padding: $footer-padding;
+    margin-top: auto;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socials {
+    display: $display-inline;
+    vertical-align: middle;
+    color: $icon-color;
+    margin: 0 0 0 10px;
+    padding: 0;
+
+    li {
+        display: inline-block;
+        margin: 0 5px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    a {
+        text-decoration: none;
+        transition: 0.3s;
+
+        i {
+            font-size: $icon-font-size-small;
+        }
+
+        &:hover i {
+            color: $hover-button-bg-color;
+        }
+    }
+}

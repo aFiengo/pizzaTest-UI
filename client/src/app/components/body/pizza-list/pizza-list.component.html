@@ -1,0 +1,10 @@
+<div class="pizza-list">
+    <h2 class="menu-title">Our Menu</h2>
+    <div class="pizza-cards">
+        <div *ngFor="let pizza of pizzas" class="pizza-card">
+            <img [src]="pizza.smallImageUrl" alt="{{pizza.name}}" class="pizza-image">
+            <h3 class="pizza-name">{{pizza.name}}</h3>
+            <button class="select-button">Select</button>
+        </div>
+    </div>
+</div>

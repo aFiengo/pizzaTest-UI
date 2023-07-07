@@ -1,7 +1,0 @@
-<div class="pizza-list">
-    <div *ngFor="let pizza of pizzas" class="pizza-card">
-        <img [src]="pizza.image" alt="{{ pizza.name }}" class="pizza-image">
-        <h2 class="pizza-name">{{ pizza.name }}</h2>
-        <button class="select-button" (click)="selectPizza(pizza)">Select</button>
-    </div>
-</div>
