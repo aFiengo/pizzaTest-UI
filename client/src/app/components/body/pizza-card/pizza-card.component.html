@@ -1,27 +1,30 @@
-<div class="pizza-card">
-    <div class="pizza-image-section">
-      <img [src]="pizza.largeImageUrl" alt="{{pizza.name}}" class="pizza-image">
-    </div>
-  
-    <div class="pizza-toppings-section">
-      <h3>Toppings</h3>
-      <ul class="topping-list">
-        <li *ngFor="let topping of pizza.toppings">
-          {{topping.name}}
-          <button class="remove-toppings-button" (click)="removeTopping(topping.id)">-</button>
-        </li>
-      </ul>
-    </div>
-  
-    <div class="pizza-add-toppings-section">
-      <h3>Add Topping</h3>
-      <div *ngFor="let topping of allToppings">
-        <input type="checkbox" (change)="onToppingChange($event, topping)" [value]="topping.id"> {{topping.name}}
+<div *ngIf="pizza" class="pizza-card">
+    <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Toppings de la Pizza</th>
+              <th>Remover</th>
+              <th>Todos los Toppings</th>
+              <th>Agregar a la Pizza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let topping of selectedPizza?.toppings">
+              <td>{{ topping.name }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="removeTopping(topping.id)">Remover</button>
+              </td>
+              <td>
+                <select [(ngModel)]="toppingToAdd" class="form-control">
+                    <option *ngFor="let topping of toppings" [value]="topping">{{ topping.name }}</option>
+                  </select>
+                </td>
+                <td>
+                  <button class="btn btn-success" (click)="addToppingToPizza()">Add</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <button class="add-toppings-button" (click)="confirmToppings()">Confirm</button>
-    </div>
-    
-    <div class="confirm-button">
-      <button (click)="finishPizza()">Finish</button>
-    </div>
 </div>

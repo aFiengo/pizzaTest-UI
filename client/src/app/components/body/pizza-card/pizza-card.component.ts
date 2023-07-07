@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 import { IPizza } from "src/app/models/pizza.model";
 import { ITopping } from "src/app/models/topping.model";
 import { PizzaService } from "src/app/services/pizza.services";
+import { ToppingService } from "src/app/services/topping.services";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-pizza-card',
@@ -10,59 +12,64 @@ import { PizzaService } from "src/app/services/pizza.services";
 })
 
 export class PizzaCardComponent implements OnInit {
-    @Input() pizza!: IPizza;
-    @Input() topping!: ITopping;
-    toppings: any[] = []; 
-    selectedToppings: ITopping[] = [];
-    addToppings = false;
+    selectedPizza: IPizza | undefined;
+    allToppings: ITopping[] = [];
+    toppingToAdd: ITopping = { id: '', name: '' };
+    toppings!: ITopping[];
   
     constructor(
-        private pizzaService: PizzaService
-        ) {}
+      private pizzaService: PizzaService,
+      private toppingService: ToppingService,
+      private route: ActivatedRoute
+    ) {}
   
-    ngOnInit() {}
+    ngOnInit(): void {
+        const id = this.route.snapshot.params['id'];
+        this.getPizza(id);
+        this.pizzaService.getToppingsForPizza(id);
   
-    onToppingChange(event: Event, topping : ITopping): void {
-        let target = event.target as HTMLInputElement;
-    if (target.checked) {
-        this.selectedToppings.push(this.topping);
-    } else {
-        this.selectedToppings = this.selectedToppings.filter(t => t.id != this.topping.id);
+      this.toppingService.getAllToppings().subscribe(
+        toppings => this.allToppings = toppings,
+        error => console.error('Error obteniendo los toppings:', error)
+      );
     }
-      }
 
-    removeTopping(toppingId: string): void {
-        this.pizzaService.deleteToppingFromPizza(this.pizza.id, toppingId).subscribe(
-          () => this.pizza.toppings = this.pizza?.toppings?.filter(topping => topping.id != toppingId),
-          error => console.error('Error removing topping: ', error)
+  removeTopping(toppingId: string): void {
+    if(this.selectedPizza) {
+      this.pizzaService.deleteToppingFromPizza(this.selectedPizza.id, toppingId).subscribe(
+        () => this.selectedPizza!.toppings = this.selectedPizza?.toppings?.filter(topping => topping.id != toppingId),
+        error => console.error('Error removing topping: ', error)
+      );
+    }
+  }
+
+  addToppingToPizza(pizzaId: string, toppingId: string): void {
+    this.pizzaService.addToppingToPizza(pizzaId, toppingId)
+      .subscribe(() => this.getPizza(pizzaId))
+  }
+  
+  getPizza(id: string): void {
+    console.log("Getting pizza with ID: ", id);
+    if(id) {
+        this.pizzaService.getPizzaById(id).subscribe(
+            pizza => this.selectedPizza = pizza,
+            error => console.error('Error getting pizza: ', error)
         );
     }
-  
-    toggleAddToppings() {
-      this.addToppings = !this.addToppings;
-    }
-
-    confirmToppings(): void {
-        if(this.selectedToppings && this.pizza) {
-            this.selectedToppings.forEach(topping => {
-              this.pizzaService.addToppingToPizza(this.pizza.id, topping.id).subscribe(
-                () => {
-                  if(this.pizza.toppings) {
-                    this.pizza.toppings = [...this.pizza.toppings, topping];
-                  } else {
-                    this.pizza.toppings = [topping];
-                  }
-                },
-                error => console.error('Error adding topping: ', error)
-              );
-            });
-          }
-      }
-  
-      finishPizza(): void {
-        console.log(this.pizza);
-        // Here you can also navigate to another component or do anything else you need.
-      }
-
-
   }
+
+  getAllToppings(): void {
+    this.toppingService.getAllToppings().subscribe(
+      toppings => {
+        this.toppings = toppings;
+      },
+      error => {
+        console.error('Error getting toppings: ', error);
+      }
+    );
+  }
+
+  finishPizza(): void {
+    console.log(this.selectedPizza);
+  }
+}
