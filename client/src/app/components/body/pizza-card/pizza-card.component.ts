@@ -17,7 +17,10 @@ export class PizzaCardComponent implements OnInit {
   allToppings: ITopping[] = [];
   toppings: ITopping[] = [];
   selectedToppings: ITopping[] = [];
+  selectedToppingId!: string;
   addToppings = false;
+  newTopping: ITopping = {id: '', name: ''};
+
   
   constructor(private route: ActivatedRoute, private pizzaService: PizzaService) { }
 
@@ -71,7 +74,16 @@ export class PizzaCardComponent implements OnInit {
       });
     }
   }
-  
+  addTopping(pizzaId: string): void {
+    if (this.newTopping.id) {
+      this.pizzaService.addToppingToPizza(pizzaId, this.newTopping.id)
+        .subscribe(() => this.getPizza(pizzaId));
+    }
+  }
+  onToppingSelect(toppingId: string): void {
+    this.selectedToppingId = toppingId;
+  }
+
   getPizza(id: string): void {
     console.log("Getting pizza with ID: ", this.pizza?.id);
     if(id) {

@@ -29,22 +29,22 @@ export class PizzaService {
   }
 
   getToppingsForPizza(id: string): Observable<ITopping[]> {
-    return this.http.get<ITopping[]>(`${this.apiUrl}/pizzas/${id}/toppings`)
+    return this.http.get<ITopping[]>(`${this.apiUrl}/${id}/toppings`)
       .pipe(catchError(this.handleError));
   }
 
   updatePizza(pizza: IPizza): Observable<IPizza> {
-    return this.http.put<IPizza>(`${this.apiUrl}/pizzas/${pizza.id}`, pizza)
+    return this.http.put<IPizza>(`${this.apiUrl}/${pizza.id}`, pizza)
       .pipe(catchError(this.handleError));
   }
 
   addToppingToPizza(pizzaId: string, toppingId: string): Observable<IPizza> {
-    return this.http.post<IPizza>(`${this.apiUrl}/pizzas/${pizzaId}/toppings/${toppingId}`, {})
+    return this.http.post<IPizza>(`${this.apiUrl}/${pizzaId}/toppings/${toppingId}`, {})
       .pipe(catchError(this.handleError));
   }
 
   deleteToppingFromPizza(pizzaId: string, toppingId: string): Observable<{}> {
-    return this.http.delete(`${this.apiUrl}/pizzas/${pizzaId}/toppings/${toppingId}`)
+    return this.http.delete(`${this.apiUrl}/${pizzaId}/toppings/${toppingId}`)
       .pipe(catchError(this.handleError));
   }
 
