@@ -1,0 +1,66 @@
+
+.pizza-list {
+    padding: 1rem;
+    text-align: center;
+    background-image: url('/Truextend/PizzaTest/client/src/assets/img/pizza_body_bg.jpg');
+    background-repeat:repeat;
+    background-size: cover;
+
+    .menu-title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .pizza-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .pizza-card {
+            flex: 1 0 21%; // 4 cards in a row, with a little space for margins
+            margin: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .pizza-image {
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .pizza-name {
+                margin: 1rem 0;
+                font-size: 1.5rem;
+            }
+
+            .select-button {
+                margin-bottom: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                color: white;
+                background-color: #f77f00;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #d65f00;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .pizza-cards .pizza-card {
+            flex: 1 0 46%; // 2 cards in a row
+        }
+    }
+
+    @media (max-width: 480px) {
+        .pizza-cards .pizza-card {
+            flex: 1 0 96%; // 1 card in a row
+        }
+    }
+}

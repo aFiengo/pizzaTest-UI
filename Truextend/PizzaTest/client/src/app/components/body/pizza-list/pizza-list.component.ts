@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { PizzaService } from "src/app/services/pizza.services";
 
 @Component({
     selector: 'app-pizza-list',
@@ -16,15 +17,11 @@ export class PizzaListComponent {
   }
 
   getPizzas(): void {
-    this.pizzaService.getAllPizzas()
+    this.pizzaService.getAllPizzasAsync()
       .subscribe(
         data => this.pizzas = data,
         error => console.error(error)
       );
   }
 
-  selectPizza(pizza): void {
-    // Aquí puedes implementar la lógica para abrir el componente 'pizza-card'
-    // Esto dependerá de cómo hayas diseñado tu aplicación.
-  }
 }
