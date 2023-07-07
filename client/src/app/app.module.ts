@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { PizzaListComponent } from './components/body/pizza-list/pizza-list.component';
 import { ToppingListComponent } from './components/body/topping-list/topping-list.component';
+import { PizzaCardComponent } from './components/body/pizza-card/pizza-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ToppingListComponent } from './components/body/topping-list/topping-lis
     HeaderComponent,
     FooterComponent,
     PizzaListComponent,
+    PizzaCardComponent,
     ToppingListComponent
   ],
   imports: [

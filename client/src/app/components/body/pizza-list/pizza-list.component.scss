@@ -2,12 +2,9 @@
 .pizza-list {
     padding: 1rem;
     text-align: center;
-    background-image: url('/client/src/assets/img/pizza_body_bg.jpg');
-    background-repeat:repeat;
-    background-size: cover;
-
+    
     .menu-title {
-        font-size: 2rem;
+        font-size: 48px;
         font-weight: bold;
     }
 
@@ -17,8 +14,8 @@
         justify-content: space-around;
 
         .pizza-card {
-            flex: 1 0 21%; // 4 cards in a row, with a little space for margins
-            margin: 1rem;
+            flex: 1 0 21%; 
+            margin: 12px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             display: flex;
@@ -31,8 +28,8 @@
             }
 
             .pizza-name {
-                margin: 1rem 0;
-                font-size: 1.5rem;
+                margin: 10px 0;
+                font-size: 24px;
             }
 
             .select-button {
@@ -54,13 +51,13 @@
 
     @media (max-width: 768px) {
         .pizza-cards .pizza-card {
-            flex: 1 0 46%; // 2 cards in a row
+            flex: 1 0 46%; 
         }
     }
 
     @media (max-width: 480px) {
         .pizza-cards .pizza-card {
-            flex: 1 0 96%; // 1 card in a row
+            flex: 1 0 96%; 
         }
     }
 }

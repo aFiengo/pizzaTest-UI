@@ -24,7 +24,7 @@ export class PizzaService {
 }
 
   getPizzaById(id: string): Observable<IPizza> {
-    return this.http.get<IPizza>(`${this.apiUrl}/pizzas/${id}`)
+    return this.http.get<IPizza>(`${this.apiUrl}/${id}`)
       .pipe(catchError(this.handleError));
   }
 

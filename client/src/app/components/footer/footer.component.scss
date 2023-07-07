@@ -1,16 +1,28 @@
-@import '../../../assets/scss/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    color: aliceblue;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
 .footer {
-    background-color: $banner-bg-color;
+    background-color: #24252A;
     width: 100%;
     height: auto;
-    font-size: $text-font-size-footer;
-    color: $text-font-color-footer;
+    font-size: 20px;
+    color: #eeeded;
     position: fixed;
     bottom: 0;
     left: 0px; 
     right: 0px; 
-    padding: $footer-padding;
+    padding: 1em;
     margin-top: auto;
     text-align: center;
 }
@@ -21,9 +33,8 @@
 }
 
 .socials {
-    display: $display-inline;
+    display: inline-block;
     vertical-align: middle;
-    color: $icon-color;
     margin: 0 0 0 10px;
     padding: 0;
 
@@ -39,11 +50,11 @@
         transition: 0.3s;
 
         i {
-            font-size: $icon-font-size-small;
+            font-size: 25px;
         }
 
         &:hover i {
-            color: $hover-button-bg-color;
+            color: #014b5c;
         }
     }
 }

@@ -1,7 +1,27 @@
-<table>
-    <tr *ngFor="let topping of toppings">
-      <td>{{ topping.name }}</td>
-      <td><button (click)="removeTopping(topping)">Remove</button></td>
-    </tr>
-  </table>
-  <button (click)="addTopping(newTopping)">Add</button>
+<div class="table-responsive">
+    <h2 class="menu-title">Our Toppings</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topping of toppings">
+          <td>{{ topping.name }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="removeTopping(topping)">Remove</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping">
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="addTopping(newTopping)">Add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

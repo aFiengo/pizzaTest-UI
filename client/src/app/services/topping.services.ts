@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { ITopping } from '../models/topping.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToppingService {
-  private apiUrl = 'http://localhost:8050/api/toppings';
+  private apiUrl = 'https://localhost:8050/api/toppings'
 
   constructor(private http: HttpClient) {}
 
   getAllToppings(): Observable<ITopping[]> {
-    return this.http.get<ITopping[]>(`${this.apiUrl}`).pipe(
-      tap(data => console.log('All: ', JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.get<any>(`${this.apiUrl}/`).pipe(
+        map(response => response.data),
+        tap(data => console.log('All: ', JSON.stringify(data))),
+        catchError(this.handleError)
+      );
   }
 
   getToppingById(id: string): Observable<ITopping> {
@@ -27,9 +28,10 @@ export class ToppingService {
   }
 
   addTopping(topping: ITopping): Observable<ITopping> {
+    topping.id = this.generateGUID();
     return this.http.post<ITopping>(`${this.apiUrl}`, topping).pipe(
-      tap(data => console.log('Add Topping: ', JSON.stringify(data))),
-      catchError(this.handleError)
+        tap(data => console.log('Add Topping: ', JSON.stringify(data))),
+        catchError(this.handleError)
     );
   }
 
@@ -45,6 +47,14 @@ export class ToppingService {
       tap(data => console.log('Delete Topping: ', JSON.stringify(data))),
       catchError(this.handleError)
     );
+  }
+
+  generateGUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 
   private handleError(err: HttpErrorResponse) {

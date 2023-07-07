@@ -8,13 +8,13 @@ import { ToppingService } from '../../../services/topping.services';
   styleUrls: ['./topping-list.component.scss']
 })
 export class ToppingListComponent implements OnInit {
-  toppings!: ITopping[];
+  toppings: ITopping[] = [];
   newTopping: ITopping = {id: '', name: ''};
 
   constructor(private toppingService: ToppingService) { }
 
   ngOnInit(): void {
-    this.getToppings();
+    this.toppingService.getAllToppings().subscribe(data => this.toppings = data);
   }
 
   getToppings(): void {
@@ -31,4 +31,5 @@ export class ToppingListComponent implements OnInit {
     this.toppingService.deleteTopping(topping.id)
       .subscribe(() => this.getToppings());
   }
+
 }

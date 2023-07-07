@@ -1,138 +1,88 @@
-@import '../../../assets/scss/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-header {
-    background-color: $banner-bg-color;
-    padding: $header-padding;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.left-section {
-    display: flex;
-    align-items: center;
+li, a, button {
+  font-family: "Montserrat", sans-serif;
+  color: aliceblue;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
 }
+a:hover{
+    text-decoration: underline;
+    color: #0088a5;
+    cursor: pointer;
+  }
+  
+  header {
+      background-color: #24252A;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  
+  .left-section {
+      display: flex;
+      align-items: center;
+  }
+  
+  .left-section li {
+      padding-left: 15px;
+  }
+  
+  .logo {
+      size: 20px;
+  }
+  
+  .logo img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: auto;
+  }
+  
 
-.logo {
-    size: 8px;
-
-    img {
-    max-width: 80%;
-    height: auto;
-    display: block;
-    margin: auto;
-    }
-}
-
-.web-tittle {
-    text-align: center;
-    font-size: 40px;
-    font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
-    font-weight: $title-font-weight-detail;
-    color: $text-font-color-header;
-    flex: 1;
-
-}
-
-.search-box {
-    padding: $box-padding;
-    background: $box-bg-color;
-    border-radius: 30px;
-    margin-right: 10px;
-
-    &:hover {
-        .search-txt {
-            width: 200px;
-            padding: $button-padding;
-        }
+  
+  .tittle {
+      text-align: center;
+      font-size: 48px;
+      font-weight: bold;
+      flex: 1;
+  }
+  
+  button {
+      padding: 7px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      background-color: rgb(90, 90, 90);
+  }
+  
+  .right-section {
+      display: flex;
+      align-items: center;
+  }
+  
+  
+  @media only screen and (max-width: 1024px) {
+  
+    .logo img {
+        max-width: 60%;
     }
     
-    .search-button {
-        color: white;
-        float: right;
-        width: $icon-font-size-large;
-        height: $icon-font-size-large;
-        border-radius: $button-border-radius-circle;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .categories {
+        font-size: 0.8em;
     }
-    
-    .search-txt {
-        border: $button-border;
-        background: none;
-        outline: none;
-        float: left;
-        padding: $button-padding;
-        color: $button-font-color;
-        font-size: $text-font-size-header;
-        transition: 0.4s;
-        line-height: 30px;
-        width: 0px;
-    }
-}
+  }
 
-.button {
-    padding: 7px 15px;
-    border-radius: 50px;
-    
-    &.sign-in {
-        background-color: $button-bg-color;
-        margin-right: 10px;
-        
-        &:hover {
-            background-color: $hover-button-bg-color;
-        }
-    }
-    
-    &.log-in {
-        background-color: transparent;
-        border: 1px solid $button-bg-color;
-        
-        &:hover {
-            background-color: $hover-button-bg-color;
-        }
-    }
-}
-
-.menu-toggle {
-    display: $display-off;
-    color: $icon-color;
-
-}
-
-@media only screen and (max-width: 768px) {
-    .logo {
-        img {
-            max-width: 50%;
-        }
-    }
-
-    .web-tittle {
-        display: $display-off;
-
-        &.open {
-            display: $display-on-mobile; 
-        }
-    }
-
-    .user-profile {
-        display: $display-off; 
-    
-        &.open {
-            display: $display-on-mobile; 
-        }
-    }
-    .search-box {
-        display: $display-off;
-    
-        &.open {
-            display: $display-on-mobile;
-        }
-    }
-
-    .menu-toggle {
-        display: $display-on-mobile;
-    }
-}
+  .pizza-icon {
+    size: 24px;
+    color: aliceblue;
+  }

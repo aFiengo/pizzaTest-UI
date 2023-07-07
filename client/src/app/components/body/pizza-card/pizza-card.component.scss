@@ -1,55 +1,47 @@
-:host {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    background-color: #fff;
-    color: #333;
-  }
+.table-responsive{
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.menu-title {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center
+}
   
-  .pizza-image-section {
-    grid-column: 1;
-  }
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
   
-  .pizza-toppings-section {
-    grid-column: 2;
-  }
+.table td,
+  .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
   
-  .pizza-add-toppings-section {
-    grid-column: 3;
-  }
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
   
-  .pizza-image {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .topping-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .add-topping-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .confirm-button,
-  .add-toppings-button,
-  .remove-toppings-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    background-color: #007bff;
+.btn-primary {
     color: #fff;
-    cursor: pointer;
-  }
+    background-color: #007bff;
+    border-color: #007bff;
+}
   
-  .confirm-button:hover,
-  .add-toppings-button:hover,
-  .remove-toppings-button:hover {
-    background-color: #0056b3;
-  }
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+  
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}

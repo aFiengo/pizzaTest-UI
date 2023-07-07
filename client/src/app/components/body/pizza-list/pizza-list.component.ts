@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { PizzaService } from "src/app/services/pizza.services";
 import { Router } from '@angular/router';
 import { IPizza } from "src/app/models/pizza.model";
@@ -12,6 +12,7 @@ import { IPizza } from "src/app/models/pizza.model";
 export class PizzaListComponent {
     pizzas: any[] = []; 
     pizza! : IPizza;
+    @Output() pizzaSelected = new EventEmitter<string>();
 
     constructor(private pizzaService: PizzaService, private router: Router) { }
 
@@ -27,8 +28,16 @@ export class PizzaListComponent {
       );
   }
 
-  selectPizza(pizza: IPizza): void {
-    this.router.navigate(['/pizza', pizza.id]);
+  selectPizza(pizzaId: string) {
+    this.pizzaService.getPizzaById(pizzaId).subscribe(
+      pizza => {
+        this.pizza = pizza;
+        this.pizzaSelected.emit(pizza.id);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
