@@ -3,17 +3,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ITopping } from '../models/topping.model';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToppingService {
-  private apiUrl = 'https://localhost:8050/api/toppings'
 
   constructor(private http: HttpClient) {}
 
   getAllToppings(): Observable<ITopping[]> {
-    return this.http.get<any>(`${this.apiUrl}/`).pipe(
+    return this.http.get<any>(`${environment.PIZZA_API}/toppings`).pipe(
         map(response => response.data),
         tap(data => console.log('All: ', JSON.stringify(data))),
         catchError(this.handleError)
@@ -21,7 +21,7 @@ export class ToppingService {
   }
 
   getToppingById(id: string): Observable<ITopping> {
-    return this.http.get<ITopping>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<ITopping>(`${environment.PIZZA_API}/toppings/${id}`).pipe(
       tap(data => console.log('Get Topping: ', JSON.stringify(data))),
       catchError(this.handleError)
     );
@@ -29,21 +29,21 @@ export class ToppingService {
 
   addTopping(topping: ITopping): Observable<ITopping> {
     topping.id = this.generateGUID();
-    return this.http.post<ITopping>(`${this.apiUrl}`, topping).pipe(
+    return this.http.post<ITopping>(`${environment.PIZZA_API}/toppings`, topping).pipe(
         tap(data => console.log('Add Topping: ', JSON.stringify(data))),
         catchError(this.handleError)
     );
   }
 
   updateTopping(id: string, topping: ITopping): Observable<ITopping> {
-    return this.http.put<ITopping>(`${this.apiUrl}/${id}`, topping).pipe(
+    return this.http.put<ITopping>(`${environment.PIZZA_API}/toppings/${id}`, topping).pipe(
       tap(data => console.log('Update Topping: ', JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   deleteTopping(id: string): Observable<{}> {
-    return this.http.delete<ITopping>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<ITopping>(`${environment.PIZZA_API}/toppings/${id}`).pipe(
       tap(data => console.log('Delete Topping: ', JSON.stringify(data))),
       catchError(this.handleError)
     );
