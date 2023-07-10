@@ -1,88 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import "../../../assets/scss/variables.scss";
+ 
+header {
+    background-color: $banner-bg-color;
+    padding: $header-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-li, a, button {
-  font-family: "Montserrat", sans-serif;
-  color: aliceblue;
-  text-decoration: none;
-  transition: all 0.3s ease 0s;
+.left-section, .right-section {
+    display: flex;
+    align-items: center;
 }
-a:hover{
-    text-decoration: underline;
-    color: #0088a5;
-    cursor: pointer;
-  }
+.logo {
+    font-size: $title-font-size-title;
+    
+    img {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+}
+
+.tittle {
+    text-align: center;
+    font-size: $title-font-size-title;
+    font-weight: $title-font-weight-detail;
+    color: $text-font-color-header;
+    flex: 1;
+}
   
-  header {
-      background-color: #24252A;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-  
-  
-  .left-section {
-      display: flex;
-      align-items: center;
-  }
-  
-  .left-section li {
-      padding-left: 15px;
-  }
-  
-  .logo {
-      size: 20px;
-  }
-  
-  .logo img {
-      max-width: 80%;
-      height: auto;
-      display: block;
-      margin: auto;
-  }
-  
+.pizza-icon {
+    font-size: $icon-font-size-large;
+    color: $icon-color;
+}
 
   
-  .tittle {
-      text-align: center;
-      font-size: 48px;
-      font-weight: bold;
-      flex: 1;
-  }
-  
-  button {
-      padding: 7px 20px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-      background-color: rgb(90, 90, 90);
-  }
-  
-  .right-section {
-      display: flex;
-      align-items: center;
-  }
-  
-  
-  @media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   
     .logo img {
         max-width: 60%;
     }
     
     .categories {
-        font-size: 0.8em;
+        font-size: $text-font-size-toppings;
     }
   }
 
-  .pizza-icon {
-    size: 24px;
-    color: aliceblue;
-  }

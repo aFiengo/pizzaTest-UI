@@ -1,37 +1,35 @@
+//====================== TEXTS ======================
 
-//====================== TITLES ======================
-
-$title-font-family: 'Arial', sans-serif;
-$title-font-style: normal;
+$title-font-size-title: 48px;
+$title-font-weight-detail: 800;
 
 $title-font-size-list: 24px;
 $title-font-weight-list: 700;
-$title-font-color-list: #000000;
 
 $title-font-size-detail: 32px;
 $title-font-weight-detail: 800;
-$title-font-color-detail: #000000;
-
-//====================== TEXTS ======================
-
-$text-font-family: 'Arial', sans-serif;
-$text-font-style: normal;
 
 $text-font-size-header: 16px;
 $text-font-weight-header: 400;
-$text-font-color-header: #ffffff;
 
 $text-font-size-toppings: 14px;
 $text-font-weight-toppings: 400;
-$text-font-color-toppings: #303030;
 
-$text-font-size-footer: 12px;
+$text-font-size-footer: 16px;
 $text-font-weight-footer: 400;
-$text-font-color-footer: #ffffff;
 
+//====================== COLORS ======================
+
+
+$text-font-color-header: #ffffff;
+$title-font-color-list: #000000;
+$title-font-color-detail: #000000;
+$text-font-color-toppings: #303030;
+$text-font-color-footer: #ffffff;
+$button-font-color: #FFFFFF;
+$icon-color: #FFFFFF;
 //====================== BUTTONS ======================
 
-$button-font-color: #FFFFFF;
 $button-border: none;
 $button-border-radius: 8px;
 $button-border-radius-circle: 50%;
@@ -40,17 +38,15 @@ $button-padding: 0px 6px;
 //====================== ICONS ======================
 
 $icon-font-size-small: 16px;
-$icon-font-size-large: 32px;
-$icon-color: #FFFFFF;
+$icon-font-size-large: 24px;
 $icon-background: none;
 
 //====================== BACKGROUNDS ======================
 
-$banner-bg-color: #24252A;
+$banner-bg-color: #000000;
 $box-bg-color: rgba(54, 54, 54, 0.5);
 $button-bg-color: #00aeff;
 $hover-button-bg-color: rgba(0, 128, 128, 0.5);
-
 
 //====================== PADDING ======================
 
