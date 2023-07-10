@@ -15,7 +15,7 @@ export class ToppingService {
   getAllToppings(): Observable<ITopping[]> {
     return this.http.get<any>(`${environment.PIZZA_API}/toppings`).pipe(
         map(response => response.data),
-        tap(data => console.log('All: ', JSON.stringify(data))),
+        tap(data => console.log('All: ', JSON.stringify(Response))),
         catchError(this.handleError)
       );
   }

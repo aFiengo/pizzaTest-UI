@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITopping } from '../../../models/topping.model';
 import { ToppingService } from '../../../services/topping.services';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-topping-list',
@@ -18,18 +19,30 @@ export class ToppingListComponent implements OnInit {
   }
 
   getToppings(): void {
+    console.log('Getting toppings...');
     this.toppingService.getAllToppings()
       .subscribe(toppings => this.toppings = toppings);
   }
 
   addTopping(topping: ITopping): void {
     this.toppingService.addTopping(topping)
-      .subscribe(() => this.getToppings());
+    .pipe(
+      tap(data => console.log('Added Topping: ', JSON.stringify(data))),
+      switchMap(() => this.toppingService.getAllToppings())
+    )
+    .subscribe(toppings => this.toppings = toppings);
   }
 
   removeTopping(topping: ITopping): void {
     this.toppingService.deleteTopping(topping.id)
-      .subscribe(() => this.getToppings());
+    .pipe(
+      tap(() => console.log('Deleted Topping')),
+      switchMap(() => this.toppingService.getAllToppings())
+    )
+    .subscribe(toppings => this.toppings = toppings);
+  }
+
+  onToppingInputChange(event: any): void {
   }
 
 }

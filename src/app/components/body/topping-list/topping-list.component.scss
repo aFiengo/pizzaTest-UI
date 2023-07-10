@@ -1,47 +1,44 @@
-.table-responsive{
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 40px;
-}
-.menu-title {
-    font-size: 48px;
-    font-weight: bold;
-    text-align: center
-}
-  
-.table {
+@import "/src/assets/scss/variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  p-table {
+    width: 50%;
     margin-bottom: 2rem;
     color: #212529;
     border-collapse: collapse;
-}
+  }
   
-.table td,
-  .table th {
+  p-table td,
+  p-table th {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-}
+  }
   
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-}
+  .menu-title {
+    font-size: $title-font-size-title;
+    font-weight: $title-font-weight-detail;
+    text-align: center;
+    color: $title-font-color-detail;
+  }
   
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
+  p-button[severity="danger"] {
+    background-color: $button-bg-color-danger;
+    color: $button-font-color;
+  }
   
-.btn-danger {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
+  p-button[severity="success"] {
+    background-color: $button-bg-color-success;
+    color: $button-font-color;
+  }
   
-.btn-success {
-    color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
-}
+  .input-field {
+    margin-right: 10px;
+  }

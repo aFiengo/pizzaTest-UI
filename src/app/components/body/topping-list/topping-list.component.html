@@ -1,3 +1,4 @@
+<div class="menu-title">OUR TOPPINGS</div>
 <p-table [value]="toppings">
   <ng-template pTemplate="header">
       <tr>
@@ -16,7 +17,7 @@
   <ng-template pTemplate="footer">
       <tr>
           <td>
-              <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping">
+              <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping" (ngModelChange)="onToppingInputChange($event)">
           </td>
           <td>
               <p-button label="Add" (onClick)="addTopping(newTopping)" icon="pi pi-check" class="p-button-success"></p-button>
