@@ -1,63 +1,42 @@
+@import "/src/assets/scss/variables.scss";
 
-.pizza-list {
-    padding: 1rem;
+.menu-title {
+    font-size: $title-font-size-title;
+    font-weight: $title-font-weight-detail;
     text-align: center;
+    color: $title-font-color-detail;
+}
+
+
+.pizza-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .pizza-card {
+        flex: 0 0 calc(25% - 2 * $card-margin);  
+        margin: $card-margin; 
+        margin-bottom: 60px;
+        height: 500px;
+        padding-bottom: 16px;
     
-    .menu-title {
-        font-size: 48px;
-        font-weight: bold;
-    }
-
-    .pizza-cards {
+        p-card {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-
-        .pizza-card {
-            flex: 1 0 21%; 
-            margin: 12px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .pizza-image {
-                width: 100%;
-                object-fit: cover;
-            }
-
-            .pizza-name {
-                margin: 10px 0;
-                font-size: 24px;
-            }
-
-            .select-button {
-                margin-bottom: 1rem;
-                padding: 0.5rem 1rem;
-                font-size: 1rem;
-                color: white;
-                background-color: #f77f00;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: #d65f00;
-                }
-            }
+        flex-direction: column;
+        align-items: center;
+        max-width: 360px;
+    
+        .pizza-img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            object-fit: cover;
         }
-    }
-
-    @media (max-width: 768px) {
-        .pizza-cards .pizza-card {
-            flex: 1 0 46%; 
+    
+        button {
+            margin-top: auto; 
+            width: 100%; 
         }
-    }
-
-    @media (max-width: 480px) {
-        .pizza-cards .pizza-card {
-            flex: 1 0 96%; 
         }
     }
 }

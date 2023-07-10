@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, pipe, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, pipe, tap, throwError } from 'rxjs';
 import { IPizza } from '../models/pizza.model';
 import { ITopping } from '../models/topping.model';
 import { environment } from 'src/environments/environment.prod';
@@ -12,15 +12,12 @@ export class PizzaService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPizzasAsync(): Observable<IPizza[]> {
+  getAllPizzas(): Observable<IPizza[]> {
     return this.http.get<IPizza[]>(`${environment.PIZZA_API}/pizzas`)
     .pipe(
-        tap(data => {
-            console.log('All Pizzas: ', JSON.stringify(data));
-            return data;
-        }),
-        catchError(this.handleError)
-    );
+      tap(data => console.log('All: ', JSON.stringify(Response))),
+      catchError(this.handleError)
+      );
 }
 
   getPizzaById(id: string): Observable<IPizza> {

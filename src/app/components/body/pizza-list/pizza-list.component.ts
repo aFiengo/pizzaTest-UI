@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
 import { PizzaService } from "src/app/services/pizza.services";
 import { Router } from '@angular/router';
 import { IPizza } from "src/app/models/pizza.model";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'app-pizza-list',
@@ -10,18 +11,27 @@ import { IPizza } from "src/app/models/pizza.model";
 })
 
 export class PizzaListComponent {
-    pizzas: any[] = []; 
+    pizzas: IPizza[] = []; 
     pizza! : IPizza;
     @Output() pizzaSelected = new EventEmitter<string>();
 
     constructor(private pizzaService: PizzaService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.pizzaService.getAllPizzasAsync().subscribe(data => this.pizzas = data);
-  }
+    ngOnInit(): void {
+      this.pizzaService.getAllPizzas().subscribe(
+        (result: any) => {
+          console.log(result);  // imprime el resultado completo
+          this.pizzas = result.data;  // suponiendo que los datos vienen en la propiedad 'data'
+          console.log(Array.isArray(this.pizzas));  // ahora debería imprimir 'true'
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
+    }
 
   getPizzas(): void {
-    this.pizzaService.getAllPizzasAsync()
+    this.pizzaService.getAllPizzas()
       .subscribe(
         data => this.pizzas = data,
         error => console.error(error)

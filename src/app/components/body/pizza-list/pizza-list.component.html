@@ -1,11 +1,11 @@
-<div class="pizza-list">
-    <h2 class="menu-title">Our Menu</h2>
-    <div class="pizza-cards">
-        <div *ngFor="let pizza of pizzas" class="pizza-card">
-
-            <img [src]="pizza.smallImageUrl" alt="{{pizza.name}}" class="pizza-image">
-            <h3 class="pizza-name">{{pizza.name}}</h3>
-            <button (click)="selectPizza(pizza.id)" class="select-button">Select</button>
-        </div>
+<div class="menu-title">OUR TOPPINGS</div>
+<div class="pizza-cards">
+    <div *ngFor="let pizza of pizzas" class="pizza-card">
+      <p-card header="{{pizza.name}}" subheader="{{pizza.description}}" [style]="{ 'max-width': '360px' }">
+        <img class="pizza-img" [src]="pizza.smallImageUrl" alt="{{ pizza.name }}" />
+        <p-footer>
+          <button pButton label="Select" (click)="selectPizza(pizza.id)"></button>
+        </p-footer>
+      </p-card>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div>
-  <<app-pizza-list (pizzaSelected)="showPizzaCard = true; selectedPizzaId = $event"></app-pizza-list>
+  <app-pizza-list (pizzaSelected)="showPizzaCard = true; selectedPizzaId = $event"></app-pizza-list>
   <app-pizza-card *ngIf="selectedPizzaId" [pizzaId]="selectedPizzaId"></app-pizza-card>
   <app-topping-list></app-topping-list>
 </div>

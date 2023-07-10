@@ -18,8 +18,11 @@ $text-font-weight-toppings: 400;
 $text-font-size-footer: 16px;
 $text-font-weight-footer: 400;
 
-//====================== COLORS ======================
+//====================== MARGINS ======================
 
+$card-margin: 16px;  
+
+//====================== COLORS ======================
 
 $text-font-color-header: #ffffff;
 $title-font-color-list: #000000;
@@ -64,3 +67,6 @@ $body-text-padding: 10px 20px;
 $display-off: none;
 $display-on-mobile: block;
 $display-inline: inline-block;
+
+$tablet-breakpoint: 768px;  
+$mobile-breakpoint: 480px;
