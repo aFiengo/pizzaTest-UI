@@ -1,27 +1,26 @@
-<div class="table-responsive">
-    <h2 class="menu-title">Our Toppings</h2>
-    <table class="table">
-      <thead>
-        <tr>
+<p-table [value]="toppings">
+  <ng-template pTemplate="header">
+      <tr>
           <th>Nombre</th>
           <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let topping of toppings">
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-topping>
+      <tr>
           <td>{{ topping.name }}</td>
           <td>
-            <button class="btn btn-danger" (click)="removeTopping(topping)">Remove</button>
+              <p-button label="Remove" (onClick)="removeTopping(topping)" icon="pi pi-times" class="p-button-danger"></p-button>
           </td>
-        </tr>
-        <tr>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <tr>
           <td>
-            <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping">
+              <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping">
           </td>
           <td>
-            <button class="btn btn-success" (click)="addTopping(newTopping)">Add</button>
+              <p-button label="Add" (onClick)="addTopping(newTopping)" icon="pi pi-check" class="p-button-success"></p-button>
           </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+      </tr>
+  </ng-template>
+</p-table>
