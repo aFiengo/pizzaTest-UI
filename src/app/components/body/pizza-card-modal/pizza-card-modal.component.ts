@@ -31,17 +31,6 @@ export class PizzaCardModalComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.pizzaService.pizzaToppingAdded.subscribe((topping: ITopping) => {
-    this.toppings.push(topping);
-  });
-
-  this.pizzaService.pizzaToppingRemoved.subscribe((id: string) => {
-    const index = this.toppings.findIndex(topping => topping.id === id);
-    if (index !== -1) {
-      this.toppings.splice(index, 1);
-    }
-  });
-    
     this.getAllToppings();
     this.getToppingsForPizza();
   }
@@ -62,8 +51,7 @@ export class PizzaCardModalComponent implements OnInit {
     if (this.pizza) {
       this.pizzaService.deleteToppingFromPizza(this.pizza.id, topping.id).subscribe(
         () => {
-          this.pizza!.toppings = this.pizza!.toppings?.filter(t => t.id !== topping.id);
-          this.pizzaService.pizzaToppingRemoved.emit(topping.id);
+          this.pizzaToppings = this.pizzaToppings.filter(t => t.id !== topping.id);
           this.snackBar.open('Topping removed successfully', 'Dismiss', {
             duration: 3000,
             verticalPosition: 'top'
@@ -88,8 +76,8 @@ export class PizzaCardModalComponent implements OnInit {
   addToppingToPizza(topping: ITopping): void {
     if (this.pizza) {
       this.pizzaService.addToppingToPizza(this.pizza.id, topping.id).subscribe(
-        updatedPizza => {
-          this.pizza!.toppings = updatedPizza.toppings;
+        () => {
+          this.pizzaToppings = [...this.pizzaToppings, topping];
           this.snackBar.open('Topping added successfully', 'Dismiss', {
             duration: 3000,
             verticalPosition: 'top'
