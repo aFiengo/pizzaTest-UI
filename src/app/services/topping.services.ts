@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ITopping } from '../models/topping.model';
 import { environment } from 'src/environments/environment.prod';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToppingService {
 
-  constructor(private http: HttpClient) {}
+  toppingAdded = new EventEmitter<ITopping>();
+  toppingRemoved = new EventEmitter<string>();
+  
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getAllToppings(): Observable<ITopping[]> {
     return this.http.get<any>(`${environment.PIZZA_API}/toppings`).pipe(

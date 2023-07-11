@@ -14,6 +14,10 @@ import { PizzaCardComponent } from './components/body/pizza-card/pizza-card.comp
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import {ButtonModule} from 'primeng/button';
     TableModule,
     CardModule,
     ButtonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
     
     ])

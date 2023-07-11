@@ -20,9 +20,7 @@ export class PizzaListComponent {
     ngOnInit(): void {
       this.pizzaService.getAllPizzas().subscribe(
         (result: any) => {
-          console.log(result);  // imprime el resultado completo
-          this.pizzas = result.data;  // suponiendo que los datos vienen en la propiedad 'data'
-          console.log(Array.isArray(this.pizzas));  // ahora debería imprimir 'true'
+          this.pizzas = result.data;  
         },
         (error: any) => {
           console.error(error);

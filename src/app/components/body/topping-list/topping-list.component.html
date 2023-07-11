@@ -10,17 +10,24 @@
       <tr>
           <td>{{ topping.name }}</td>
           <td>
-              <p-button label="Remove" (onClick)="removeTopping(topping)" icon="pi pi-times" class="p-button-danger"></p-button>
+            <button mat-raised-button color="warn" (click)="removeTopping(topping)">
+              <mat-icon>clear</mat-icon>
+              Remove
+            </button>
           </td>
       </tr>
   </ng-template>
   <ng-template pTemplate="footer">
       <tr>
           <td>
-              <input type="text" [(ngModel)]="newTopping.name" placeholder="New topping" (ngModelChange)="onToppingInputChange($event)">
+            <input type="text" [(ngModel)]="newTopping.name" placeholder="Add New topping..."
+            [class]="newTopping.name ? 'input-filled' : 'input-empty'">
           </td>
           <td>
-              <p-button label="Add" (onClick)="addTopping(newTopping)" icon="pi pi-check" class="p-button-success"></p-button>
+            <button mat-raised-button class="custom-button success" (click)="addTopping(newTopping)">
+              <mat-icon>check</mat-icon>
+              Add
+            </button>
           </td>
       </tr>
   </ng-template>
