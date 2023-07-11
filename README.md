@@ -1,26 +1,38 @@
-# Client
+# The Great Pizza Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## Description
 
-## Development server
+The Great Pizza Test is a web-app that was generated with Anglar CLI, to manage a Pizza Restaurant. In this application the User can:
+- See the list of Pizzas
+- See a list of available toppings
+- See a selected pizza with its toppings listed
+- Ability to add, and delete a topping from a Pizza
+- Ability to add, and delete a topping from available topping list
 
-Run `ng serve` for a dev server. Navigate to `https://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies Used
 
-## Code scaffolding
+- Node.js v18.16.1
+- Angular CLI v16.1.4
+- Package Manager npm v9.5.1
+- HTML
+- SCSS
+- TypeScritp
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installing the Project
+
+Once you cloned the repository, on the root folder, run `npm install`.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Running the Project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can use `ng serve` or `npm start` to run the project. Navigate to `https://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+## Limitations
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The project is not designed for mobile.
 
 ## Further help
 
