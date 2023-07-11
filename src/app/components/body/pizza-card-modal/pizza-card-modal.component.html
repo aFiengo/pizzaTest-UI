@@ -1,0 +1,54 @@
+<div class="pizza-card">
+  <div class="pizza-details">
+    <div class="pizza-toppings-section">
+      <h4 class="section-title">Toppings</h4>
+      <p-table [value]="pizzaToppings">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Opciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topping>
+          <tr>
+            <td>{{ topping.name }}</td>
+            <td>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="removeToppingFromPizza(topping)"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<div class="available-toppings-section">
+  <h4 class="section-title">Available Toppings</h4>
+  <p-table [value]="allToppings" [scrollable]="true" scrollHeight="400px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Opciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-topping>
+      <tr>
+        <td>{{ topping.name }}</td>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToppingToPizza(topping)"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

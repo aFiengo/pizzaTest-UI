@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PizzaListComponent } from './components/body/pizza-list/pizza-list.component';
-import { PizzaCardComponent } from './components/body/pizza-card/pizza-card.component';
+import { PizzaCardModalComponent } from './components/body/pizza-card-modal/pizza-card-modal.component';
 
 const routes: Routes = [
   { path: 'pizzas', component: PizzaListComponent },
-  { path: 'pizzas/:id', component: PizzaCardComponent },
   { path: '', redirectTo: '/pizzas', pathMatch: 'full' },
 ];
 

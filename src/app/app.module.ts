@@ -10,14 +10,15 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { PizzaListComponent } from './components/body/pizza-list/pizza-list.component';
 import { ToppingListComponent } from './components/body/topping-list/topping-list.component';
-import { PizzaCardComponent } from './components/body/pizza-card/pizza-card.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PizzaCardModalComponent } from './components/body/pizza-card-modal/pizza-card-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     FooterComponent,
     PizzaListComponent,
-    PizzaCardComponent,
+    PizzaCardModalComponent,
     ToppingListComponent
   ],
   imports: [
@@ -39,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
     

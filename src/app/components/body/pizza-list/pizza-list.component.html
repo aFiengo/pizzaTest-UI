@@ -4,7 +4,7 @@
       <p-card header="{{pizza.name}}" subheader="{{pizza.description}}" [style]="{ 'max-width': '360px' }">
         <img class="pizza-img" [src]="pizza.smallImageUrl" alt="{{ pizza.name }}" />
         <p-footer>
-          <button pButton label="Select" (click)="selectPizza(pizza.id)"></button>
+          <button pButton label="Select Pizza" (click)="openPizzaCardModal(pizza)"></button>
         </p-footer>
       </p-card>
     </div>

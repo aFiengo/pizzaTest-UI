@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { PizzaService } from "src/app/services/pizza.services";
-import { Router } from '@angular/router';
 import { IPizza } from "src/app/models/pizza.model";
-import { Observable } from "rxjs";
+import { MatDialog } from '@angular/material/dialog';
+import { PizzaCardModalComponent } from "../pizza-card-modal/pizza-card-modal.component";
 
 @Component({
     selector: 'app-pizza-list',
@@ -13,9 +13,8 @@ import { Observable } from "rxjs";
 export class PizzaListComponent {
     pizzas: IPizza[] = []; 
     pizza! : IPizza;
-    @Output() pizzaSelected = new EventEmitter<string>();
 
-    constructor(private pizzaService: PizzaService, private router: Router) { }
+    constructor(private pizzaService: PizzaService, private dialog: MatDialog) { }
 
     ngOnInit(): void {
       this.pizzaService.getAllPizzas().subscribe(
@@ -36,16 +35,14 @@ export class PizzaListComponent {
       );
   }
 
-  selectPizza(pizzaId: string) {
-    this.pizzaService.getPizzaById(pizzaId).subscribe(
-      pizza => {
-        this.pizza = pizza;
-        this.pizzaSelected.emit(pizza.id);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  openPizzaCardModal(pizza: IPizza): void {
+    const dialogRef = this.dialog.open(PizzaCardModalComponent, {
+      width: '80%',
+      data: { pizza: pizza }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The modal was closed');
+    });
   }
-
 }

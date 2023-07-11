@@ -1,0 +1,42 @@
+.pizza-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    
+    .pizza-details {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+      .pizza-toppings-section {
+        width: 100%;
+        margin-bottom: 20px;
+        
+        .section-title {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        
+        p-table {
+          width: 100%;
+        }
+      }
+      
+      .available-toppings-section {
+        width: 48%;
+        margin-bottom: 20px;
+        
+        .section-title {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        
+        p-table {
+          width: 100%;
+        }
+      }
+    }
+}
+    

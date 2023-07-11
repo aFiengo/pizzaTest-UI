@@ -27,9 +27,7 @@ export class ToppingListComponent implements OnInit {
         this.toppings.splice(index, 1);
       }
     });
-
     this.getToppings();
-
   }
 
   getToppings(): void {

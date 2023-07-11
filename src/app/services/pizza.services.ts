@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, map, pipe, tap, throwError } from 'rxjs';
 import { IPizza } from '../models/pizza.model';
@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class PizzaService {  
+  
+  pizzaToppingAdded = new EventEmitter<ITopping>();
+  pizzaToppingRemoved = new EventEmitter<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +39,7 @@ export class PizzaService {
   }
 
   addToppingToPizza(pizzaId: string, toppingId: string): Observable<IPizza> {
-    return this.http.post<IPizza>(`${environment.PIZZA_API}/pizzas/${pizzaId}/toppings/${toppingId}`, {})
+    return this.http.put<IPizza>(`${environment.PIZZA_API}/pizzas/${pizzaId}/toppings/${toppingId}`, {})
       .pipe(catchError(this.handleError));
   }
 
