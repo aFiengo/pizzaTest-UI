@@ -1,8 +1,8 @@
 <div class="pizza-card">
   <div class="pizza-details">
     <div class="pizza-toppings-section">
-      <h4 class="section-title">Toppings</h4>
-      <p-table [value]="pizzaToppings">
+      <div class="section-title">Toppings</div>
+      <p-table [value]="pizzaToppings" [scrollable]="true" scrollHeight="400px">
         <ng-template pTemplate="header">
           <tr>
             <th>Nombre</th>
@@ -28,7 +28,7 @@
   </div>
 </div>
 <div class="available-toppings-section">
-  <h4 class="section-title">Available Toppings</h4>
+  <div class="section-title">Toppings to Add</div>
   <p-table [value]="allToppings" [scrollable]="true" scrollHeight="400px">
     <ng-template pTemplate="header">
       <tr>
