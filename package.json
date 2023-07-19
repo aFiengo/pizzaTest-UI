@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "private": true,
   "dependencies": {
@@ -31,14 +33,16 @@
     "@angular-devkit/build-angular": "^16.1.4",
     "@angular/cli": "~16.1.4",
     "@angular/compiler-cli": "^16.1.0",
-    "@types/jasmine": "^4.3.5",
-    "jasmine": "^5.0.2",
-    "karma": "^6.4.2",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage-istanbul-reporter": "^3.0.3",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
-    "karma-opera-launcher": "^1.0.0",
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.1",
+    "jest-preset-angular": "^13.1.1",
     "typescript": "~5.1.3"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "globalSetup": "jest-preset-angular/global-setup"
   }
 }
