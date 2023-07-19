@@ -31,6 +31,23 @@ describe('ToppingService', () => {
         expect(service).toBeTruthy();
     });
 
+    test('should fetch all toppings', () => {
+        const mockedToppings: ITopping[] = [
+            { id: '1', name: 'Tomato' },
+            { id: '2', name: 'Cheese' },
+            { id: '3', name: 'Pepperoni' }
+        ];
+    
+        service.getAllToppings().subscribe(toppings => {
+            expect(toppings.length).toBe(mockedToppings.length);
+            expect(toppings).toEqual(mockedToppings);
+        });
+    
+        const req = httpMock.expectOne(`https://localhost:8050/api/toppings`);
+        expect(req.request.method).toBe('GET');
+        req.flush(mockedToppings); 
+    });
+
     test('should fetch topping by id', () => {
         const mockTopping: ITopping = {
             id: '17F0181B-D488-412F-B3C2-65E841134C44',
@@ -44,5 +61,47 @@ describe('ToppingService', () => {
         const req = httpMock.expectOne(`https://localhost:8050/api/toppings/17F0181B-D488-412F-B3C2-65E841134C44`);
         expect(req.request.method).toBe('GET');
         req.flush(mockTopping); 
+    });
+
+    test('should create a topping', () => {
+        const newTopping: ITopping = {
+            id: '12345',
+            name: 'Chuño',
+        };
+    
+        service.addTopping(newTopping).subscribe(topping => {
+            expect(topping).toEqual(newTopping);
+        });
+    
+        const req = httpMock.expectOne(`https://localhost:8050/api/toppings`);
+        expect(req.request.method).toBe('POST');
+        req.flush(newTopping); 
+    });
+
+    test('should update a topping', () => {
+        const updatedTopping: ITopping = {
+            id: '12345',
+            name: 'Updated Chuño',
+        };
+    
+        service.updateTopping(updatedTopping.id, updatedTopping).subscribe(topping => {
+            expect(topping).toEqual(updatedTopping);
+        });
+    
+        const req = httpMock.expectOne(`https://localhost:8050/api/toppings/${updatedTopping.id}`);
+        expect(req.request.method).toBe('PUT');
+        req.flush(updatedTopping); 
+    });
+
+    test('should delete a topping', () => {
+        const id = '17F0181B-D488-412F-B3C2-65E841134C44'; 
+    
+        service.deleteTopping(id).subscribe(res => {
+            expect(res).toEqual({status: 'success'});
+        });
+    
+        const req = httpMock.expectOne(`https://localhost:8050/api/toppings/${id}`);
+        expect(req.request.method).toBe('DELETE');
+        req.flush({status: 'success'}); 
     });
 });
