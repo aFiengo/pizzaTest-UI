@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ITopping } from '../models/topping.model';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '../../environments/environment.prod';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -64,9 +64,9 @@ export class ToppingService {
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
-        errorMessage = 'An error occurred: ${err.error.message}';
+        errorMessage = `An error occurred: ${err.error.message}`;
     } else {
-        errorMessage = 'Server returned code: ${err.status}, error message is: ${err.message}';
+        errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
     console.error(errorMessage);
     return throwError(()=>errorMessage);

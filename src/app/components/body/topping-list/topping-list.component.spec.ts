@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToppingListComponent } from './topping-list.component';
-import { ToppingService } from '../../../services/topping.services';
+import { ToppingService } from '../../../services/topping.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 import { ITopping } from '../../../models/topping.model';

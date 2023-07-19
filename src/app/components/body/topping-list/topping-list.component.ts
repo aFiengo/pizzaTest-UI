@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITopping } from '../../../models/topping.model';
-import { ToppingService } from '../../../services/topping.services';
+import { ToppingService } from '../../../services/topping.service';
 import { switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
