@@ -36,6 +36,7 @@ export class PizzaListComponent {
   }
 
   openPizzaCardModal(pizza: IPizza): void {
+    this.pizza = pizza;
     const dialogRef = this.dialog.open(PizzaCardModalComponent, {
       width: '80%',
       data: { pizza: pizza }

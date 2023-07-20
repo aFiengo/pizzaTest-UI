@@ -12,7 +12,7 @@ import { PizzaListComponent } from './components/body/pizza-list/pizza-list.comp
 import { ToppingListComponent } from './components/body/topping-list/topping-list.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
