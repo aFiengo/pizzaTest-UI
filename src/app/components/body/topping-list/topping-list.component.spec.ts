@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToppingListComponent } from './topping-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TableModule } from 'primeng/table';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 
 describe('ToppingListComponent', () => {
@@ -12,7 +15,10 @@ describe('ToppingListComponent', () => {
         await TestBed.configureTestingModule({
         declarations: [ ToppingListComponent ],
         imports: [ HttpClientTestingModule,
-            MatSnackBarModule]
+            MatSnackBarModule,
+            TableModule,
+            MatIconModule,
+            FormsModule]
         })
         .compileComponents();
     });

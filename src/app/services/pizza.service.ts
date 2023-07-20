@@ -18,7 +18,7 @@ export class PizzaService {
   getAllPizzas(): Observable<IPizza[]> {
     return this.http.get<IPizza[]>(`${environment.PIZZA_API}/pizzas`)
     .pipe(
-      tap(data => console.log('All: ', JSON.stringify(Response))),
+      tap(data => console.log('All: ', JSON.stringify(data))),
       catchError(this.handleError)
       );
 }

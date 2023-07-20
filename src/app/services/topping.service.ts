@@ -17,40 +17,31 @@ export class ToppingService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getAllToppings(): Observable<ITopping[]> {
-    return this.http.get<any>(`${environment.PIZZA_API}/toppings`).pipe(
-        map(response => response.data),
-        tap(data => console.log('All: ', JSON.stringify(Response))),
-        catchError(this.handleError)
-      );
+    return this.http.get<ITopping[]>(`${environment.PIZZA_API}/toppings`).pipe(
+      tap(data => console.log('All: ', JSON.stringify(data))),
+      catchError(this.handleError)
+    );
   }
 
   getToppingById(id: string): Observable<ITopping> {
-    return this.http.get<ITopping>(`${environment.PIZZA_API}/toppings/${id}`).pipe(
-      tap(data => console.log('Get Topping: ', JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.get<ITopping>(`${environment.PIZZA_API}/toppings/${id}`)
+    .pipe(catchError(this.handleError));
   }
 
   addTopping(topping: ITopping): Observable<ITopping> {
     topping.id = this.generateGUID();
-    return this.http.post<ITopping>(`${environment.PIZZA_API}/toppings`, topping).pipe(
-        tap(data => console.log('Add Topping: ', JSON.stringify(data))),
-        catchError(this.handleError)
-    );
+    return this.http.post<ITopping>(`${environment.PIZZA_API}/toppings`, topping)
+    .pipe(catchError(this.handleError));
   }
 
   updateTopping(id: string, topping: ITopping): Observable<ITopping> {
-    return this.http.put<ITopping>(`${environment.PIZZA_API}/toppings/${id}`, topping).pipe(
-      tap(data => console.log('Update Topping: ', JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.put<ITopping>(`${environment.PIZZA_API}/toppings/${id}`, topping)
+    .pipe(catchError(this.handleError));
   }
 
   deleteTopping(id: string): Observable<{}> {
-    return this.http.delete<ITopping>(`${environment.PIZZA_API}/toppings/${id}`).pipe(
-      tap(data => console.log('Delete Topping: ', JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.delete<ITopping>(`${environment.PIZZA_API}/toppings/${id}`)
+    .pipe(catchError(this.handleError));
   }
 
   generateGUID(): string {
