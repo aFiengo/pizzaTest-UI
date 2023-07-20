@@ -14,7 +14,7 @@ export class ToppingListComponent implements OnInit {
   toppings: ITopping[] = [];
   newTopping: ITopping = {id: '', name: ''};
 
-  constructor(private toppingService: ToppingService, private snackBar: MatSnackBar) { }
+  constructor(private toppingService: ToppingService, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.toppingService.toppingAdded.subscribe((topping: ITopping) => {
@@ -59,7 +59,7 @@ export class ToppingListComponent implements OnInit {
         });
       },
       error => {
-        this.snackBar.open("You can't revome this topping, It's associated with many pizzas", 'Dismiss', {
+        this.snackBar.open("You can't remove this topping, It's associated with many pizzas", 'Dismiss', {
           duration: 3000, verticalPosition: 'top'
         });
       }

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ITopping } from '../../models/topping.model';
+import { environment } from '../../../environments/environment.prod';
 
 describe('ToppingService', () => {
     let service: ToppingService;
@@ -42,7 +43,7 @@ describe('ToppingService', () => {
             expect(toppings).toEqual(mockedToppings);
         });
     
-        const req = httpMock.expectOne(`https://localhost:8050/api/toppings`);
+        const req = httpMock.expectOne(`${environment.PIZZA_API}/toppings`);
         expect(req.request.method).toBe('GET');
         req.flush(mockedToppings); 
     });
@@ -57,7 +58,7 @@ describe('ToppingService', () => {
             expect(topping).toEqual(mockTopping);
         });
 
-        const req = httpMock.expectOne(`https://localhost:8050/api/toppings/17F0181B-D488-412F-B3C2-65E841134C44`);
+        const req = httpMock.expectOne(`${environment.PIZZA_API}/toppings/17F0181B-D488-412F-B3C2-65E841134C44`);
         expect(req.request.method).toBe('GET');
         req.flush(mockTopping); 
     });
@@ -72,7 +73,7 @@ describe('ToppingService', () => {
             expect(topping).toEqual(newTopping);
         });
     
-        const req = httpMock.expectOne(`https://localhost:8050/api/toppings`);
+        const req = httpMock.expectOne(`${environment.PIZZA_API}/toppings`);
         expect(req.request.method).toBe('POST');
         req.flush(newTopping); 
     });
@@ -87,7 +88,7 @@ describe('ToppingService', () => {
             expect(topping).toEqual(updatedTopping);
         });
     
-        const req = httpMock.expectOne(`https://localhost:8050/api/toppings/${updatedTopping.id}`);
+        const req = httpMock.expectOne(`${environment.PIZZA_API}/toppings/${updatedTopping.id}`);
         expect(req.request.method).toBe('PUT');
         req.flush(updatedTopping); 
     });
@@ -99,7 +100,7 @@ describe('ToppingService', () => {
             expect(res).toEqual({status: 'success'});
         });
     
-        const req = httpMock.expectOne(`https://localhost:8050/api/toppings/${id}`);
+        const req = httpMock.expectOne(`${environment.PIZZA_API}/toppings/${id}`);
         expect(req.request.method).toBe('DELETE');
         req.flush({status: 'success'}); 
     });
