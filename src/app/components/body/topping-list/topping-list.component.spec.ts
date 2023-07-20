@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToppingListComponent } from './topping-list.component';
-import { ToppingService } from '../../../services/topping.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { of } from 'rxjs';
-import { ITopping } from '../../../models/topping.model';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 describe('ToppingListComponent', () => {
     let component: ToppingListComponent;
@@ -11,7 +10,9 @@ describe('ToppingListComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-        declarations: [ ToppingListComponent ]
+        declarations: [ ToppingListComponent ],
+        imports: [ HttpClientTestingModule,
+            MatSnackBarModule]
         })
         .compileComponents();
     });

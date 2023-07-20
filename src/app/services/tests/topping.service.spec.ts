@@ -21,7 +21,6 @@ describe('ToppingService', () => {
         });
         service = TestBed.inject(ToppingService);
         httpMock = TestBed.inject(HttpTestingController);
-        console.log(httpMock);
     });
 
     afterEach(() => {

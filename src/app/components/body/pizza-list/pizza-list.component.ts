@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { PizzaService } from "src/app/services/pizza.service";
+import { PizzaService } from "../../../services/pizza.service";
 import { IPizza } from "src/app/models/pizza.model";
 import { MatDialog } from '@angular/material/dialog';
 import { PizzaCardModalComponent } from "../pizza-card-modal/pizza-card-modal.component";

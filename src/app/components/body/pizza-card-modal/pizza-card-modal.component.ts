@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit, SimpleChanges } from "@angular/core";
 import { IPizza } from "src/app/models/pizza.model";
 import { ITopping } from "src/app/models/topping.model";
-import { PizzaService } from "src/app/services/pizza.service";
-import { ToppingService } from "src/app/services/topping.service";
+import { PizzaService } from "../../../services/pizza.service";
+import { ToppingService } from "../../../services/topping.service";
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
