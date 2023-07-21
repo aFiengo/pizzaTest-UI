@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, map, pipe, tap, throwError } from 'rxjs';
 import { IPizza } from '../models/pizza.model';
 import { ITopping } from '../models/topping.model';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
