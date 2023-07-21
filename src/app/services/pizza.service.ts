@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, map, pipe, tap, throwError } from 'rxjs';
 import { IPizza } from '../models/pizza.model';
 import { ITopping } from '../models/topping.model';
-import { environment } from '../../environments/environment.prod';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class PizzaService {
   getAllPizzas(): Observable<IPizza[]> {
     return this.http.get<IPizza[]>(`${environment.PIZZA_API}/pizzas`)
     .pipe(
-      tap(data => console.log('All: ', JSON.stringify(data))),
+      tap(data => console.log('All: ', JSON.stringify(Response))),
       catchError(this.handleError)
       );
 }
@@ -51,9 +51,9 @@ export class PizzaService {
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred: ${err.error.message}`;
+        errorMessage = 'An error occurred: ${err.error.message}';
     } else {
-        errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+        errorMessage = 'Server returned code: ${err.status}, error message is: ${err.message}';
     }
     console.error(errorMessage);
     return throwError(()=>errorMessage);
