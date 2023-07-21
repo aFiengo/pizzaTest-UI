@@ -10,6 +10,11 @@ import { environment } from '../../../environments/environment.prod';
 describe('PizzaService', () => {
     let service: PizzaService;
     let httpMock: HttpTestingController;
+    const mockPizza: IPizza = 
+        { id: '1', name: 'Margherita', 
+        description: 'Classic Italian pizza with tomato, mozzarella, and basil', 
+        smallImageUrl: 'https://example.com/pizza-margherita-small.jpg', 
+        largeImageUrl: 'https://example.com/pizza-margherita-large.jpg'};
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -55,12 +60,6 @@ describe('PizzaService', () => {
     });
 
     test('should fetch pizza by id', () => {
-        const mockPizza: IPizza = 
-            { id: '1', name: 'Margherita', 
-            description: 'Classic Italian pizza with tomato, mozzarella, and basil', 
-            smallImageUrl: 'https://example.com/pizza-margherita-small.jpg', 
-            largeImageUrl: 'https://example.com/pizza-margherita-large.jpg'};
-
         service.getPizzaById('1').subscribe(pizza => {
             expect(pizza).toEqual(mockPizza);
         });
@@ -86,12 +85,6 @@ describe('PizzaService', () => {
     });
 
     test('should update pizza', () => {
-        const mockPizza: IPizza = 
-        { id: '1', name: 'Margherita', 
-            description: 'Classic Italian pizza with tomato, mozzarella, and basil', 
-            smallImageUrl: 'https://example.com/pizza-margherita-small.jpg', 
-            largeImageUrl: 'https://example.com/pizza-margherita-large.jpg'};
-
         service.updatePizza(mockPizza).subscribe(pizza => {
             expect(pizza).toEqual(mockPizza);
         });
@@ -102,12 +95,6 @@ describe('PizzaService', () => {
     });
 
     test('should add topping to pizza', () => {
-        const mockPizza: IPizza = 
-        { id: '1', name: 'Margherita', 
-        description: 'Classic Italian pizza with tomato, mozzarella, and basil', 
-        smallImageUrl: 'https://example.com/pizza-margherita-small.jpg', 
-        largeImageUrl: 'https://example.com/pizza-margherita-large.jpg'};
-
         service.addToppingToPizza('1', '1').subscribe(pizza => {
             expect(pizza).toEqual(mockPizza);
         });

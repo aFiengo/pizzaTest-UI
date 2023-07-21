@@ -27,12 +27,12 @@ export class PizzaCardModalComponent implements OnInit {
     private toppingService: ToppingService, 
     private snackBar: MatSnackBar,
     private dialog: MatDialog) {
-      this.pizza = data.pizza;
+        this.pizza = data.pizza;
     }
 
   ngOnInit(): void {
-    this.getAllToppings();
-    this.getToppingsForPizza();
+      this.getAllToppings();
+      this.getToppingsForPizza();
   }
 
   onClose(): void {
